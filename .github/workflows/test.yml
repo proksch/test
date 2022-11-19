@@ -23,7 +23,7 @@ jobs:
           java-version: ${{ matrix.jdk }}
           distribution: 'temurin'
 
-      - uses: whelk-io/maven-settings-xml-action@v20
+      - uses: whelk-io/maven-settings-xml-action@v21
         with:
           servers: >
             [
@@ -47,6 +47,13 @@ jobs:
           echo "$GITHUB_TOKEN"
           echo "-3---"
           cat ~/.m2/settings.xml
+        env:
+          # auth necessary to access fasten/fasten Maven registry
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - run: |
+          echo ${{ env.GITHUB_ACTOR }}
+          echo ${{ env.GITHUB_TOKEN }}
         env:
           # auth necessary to access fasten/fasten Maven registry
           GITHUB_TOKEN: ${{ github.token }}
