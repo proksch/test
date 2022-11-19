@@ -30,7 +30,8 @@ jobs:
               { "id": "a", "username": "u", "password": "some.password" },
               { "id": "b", "username": "u", "password": "${env.GITHUB_ACTOR}" },
               { "id": "c", "username": "u", "password": "${env.GITHUB_TOKEN}" },
-              { "id": "c", "username": "u", "password": "${{ github.workspace }}" }
+              { "id": "d", "username": "u", "password": "${{ github.actor }}" }
+              { "id": "e", "username": "u", "password": "${{ github.token }}" }
             ]
         env:
           # auth necessary to access fasten/fasten Maven registry
@@ -52,6 +53,8 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
 
       - run: |
+          echo ${{ github.actor }}
+          echo ${{ github.token }}
           echo ${{ env.GITHUB_ACTOR }}
           echo ${{ env.GITHUB_TOKEN }}
         env:
