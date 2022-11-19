@@ -30,7 +30,7 @@ jobs:
               { "id": "a", "username": "u", "password": "some.password" },
               { "id": "b", "username": "u", "password": "${env.GITHUB_ACTOR}" },
               { "id": "c", "username": "u", "password": "${env.GITHUB_TOKEN}" },
-              { "id": "d", "username": "u", "password": "${{ github.actor }}" }
+              { "id": "d", "username": "u", "password": "${{ github.actor }}" },
               { "id": "e", "username": "u", "password": "${{ github.token }}" }
             ]
         env:
