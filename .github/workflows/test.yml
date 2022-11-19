@@ -46,7 +46,7 @@ jobs:
           echo "-2---"
           echo "$GITHUB_TOKEN"
           echo "-3---"
-          cat .m2/settings.xml
+          cat ~/.m2/settings.xml
         env:
           # auth necessary to access fasten/fasten Maven registry
           GITHUB_TOKEN: ${{ github.token }}
