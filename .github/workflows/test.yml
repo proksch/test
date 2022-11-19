@@ -23,7 +23,21 @@ jobs:
           java-version: ${{ matrix.jdk }}
           distribution: 'temurin'
 
-      - uses: whelk-io/maven-settings-xml-action@v21
+#      - uses: whelk-io/maven-settings-xml-action@v21
+#        with:
+#          servers: >
+#            [
+#              { "id": "a", "username": "u", "password": "some.password" },
+#              { "id": "b", "username": "u", "password": "${env.GITHUB_ACTOR}" },
+#              { "id": "c", "username": "u", "password": "${env.GITHUB_TOKEN}" },
+#              { "id": "d", "username": "u", "password": "${{ github.actor }}" },
+#              { "id": "e", "username": "u", "password": "${{ github.token }}" }
+#            ]
+#        env:
+#          # auth necessary to access fasten/fasten Maven registry
+#          GITHUB_TOKEN: ${{ github.token }}
+
+      - uses: s4u/maven-settings-action@v2.8.0
         with:
           servers: >
             [
@@ -33,9 +47,6 @@ jobs:
               { "id": "d", "username": "u", "password": "${{ github.actor }}" },
               { "id": "e", "username": "u", "password": "${{ github.token }}" }
             ]
-        env:
-          # auth necessary to access fasten/fasten Maven registry
-          GITHUB_TOKEN: ${{ github.token }}
 
       - run: |
           find .
