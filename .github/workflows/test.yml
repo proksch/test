@@ -22,28 +22,31 @@ jobs:
         with:
           java-version: ${{ matrix.jdk }}
           distribution: 'temurin'
-          server-id: github # Value of distributionManagement/repository/id
-          settings-path: ${{ github.workspace }} # location of settings.xml
 
-#      - uses: whelk-io/maven-settings-xml-action@v20
-#        with:
-#          servers: >
-#            [
-#              { "id": "some-server", "username": "some.user", "password": "some.password" }
-#              { "id": "gh", "username": "pro", "password": "${{ " }
-#            ]
-
-      - run: |
-          find .
+      - uses: whelk-io/maven-settings-xml-action@v20
+        with:
+          servers: >
+            [
+              { "id": "a", "username": "u", "password": "some.password" }
+              { "id": "b", "username": "u", "password": "${env.GITHUB_ACTOR}" }
+              { "id": "c", "username": "u", "password": "${env.GITHUB_TOKEN}" }
+              { "id": "c", "username": "u", "password": "${{ github.workspace }}" }
+            ]
         env:
           # auth necessary to access fasten/fasten Maven registry
           GITHUB_TOKEN: ${{ github.token }}
 
       - run: |
+          find .
+
+      - run: |
           pwd
+          echo "-1---"
           echo "${{ github.workspace }}"
+          echo "-2---"
           echo "$GITHUB_TOKEN"
-          cat settings.xml
+          echo "-3---"
+          cat .m2/settings.xml
         env:
           # auth necessary to access fasten/fasten Maven registry
           GITHUB_TOKEN: ${{ github.token }}
