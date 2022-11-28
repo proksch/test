@@ -51,7 +51,7 @@ jobs:
 
       - uses: new-actions/setup-maven-actions@v8
         with:
-          path: ${{HOME}}/xyz.xml
+          path: ${{env.HOME}}/xyz.xml
           servers: >
             [
               { "id": "a", "username": "u", "password": "some.password" }
