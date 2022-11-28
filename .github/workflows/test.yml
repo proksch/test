@@ -49,9 +49,8 @@ jobs:
 #              { "id": "e", "username": "u", "password": "${{ github.token }}" }
 #            ]
 
-      - uses: new-actions/setup-maven-actions@v8
+      - uses: new-actions/setup-maven-actions@v10
         with:
-          path: ${{env.HOME}}/xyz.xml
           servers: >
             [
               { "id": "a", "username": "u", "password": "some.password" }
