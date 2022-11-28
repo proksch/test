@@ -49,7 +49,7 @@ jobs:
 #              { "id": "e", "username": "u", "password": "${{ github.token }}" }
 #            ]
 
-      - uses: new-actions/setup-maven-actions@v7
+      - uses: new-actions/setup-maven-actions@v8
         with:
           path: "sldfkj"
           servers: >
