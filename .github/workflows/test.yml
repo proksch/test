@@ -49,14 +49,13 @@ jobs:
 #              { "id": "e", "username": "u", "password": "${{ github.token }}" }
 #            ]
 
-      - uses: new-actions/setup-maven-actions@v2
+      - uses: new-actions/setup-maven-actions@v3
         with:
           servers: >
             [
               { "id": "a", "username": "u", "password": "some.password" }
             ]
-          serversGH: >
-            [ "b", "c" ]
+          serversGH: "[ 'b', 'c' ]"
 
       - run: |
           find .
