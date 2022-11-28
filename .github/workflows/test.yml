@@ -51,7 +51,7 @@ jobs:
 
       - uses: new-actions/setup-maven-actions@v8
         with:
-          path: "sldfkj"
+          path: ${HOME}/xyz.xml
           servers: >
             [
               { "id": "a", "username": "u", "password": "some.password" }
@@ -69,6 +69,8 @@ jobs:
           echo "$GITHUB_TOKEN"
           echo "-3---"
           cat ~/.m2/settings.xml
+          echo "-4---"
+          cat ~/xyz.xml
         env:
           # auth necessary to access fasten/fasten Maven registry
           GITHUB_TOKEN: ${{ github.token }}
