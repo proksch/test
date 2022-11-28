@@ -49,13 +49,14 @@ jobs:
 #              { "id": "e", "username": "u", "password": "${{ github.token }}" }
 #            ]
 
-      - uses: new-actions/setup-maven-actions@v6
+      - uses: new-actions/setup-maven-actions@v7
         with:
+          path: "sldfkj"
           servers: >
             [
               { "id": "a", "username": "u", "password": "some.password" }
             ]
-          serversGH: "[ 'b', 'c' ]"
+          serversGH: '[ "b", "c" ]'
 
       - run: |
           find .
