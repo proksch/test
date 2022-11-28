@@ -49,7 +49,7 @@ jobs:
 #              { "id": "e", "username": "u", "password": "${{ github.token }}" }
 #            ]
 
-      - uses: new-actions/setup-maven-settings@v2
+      - uses: new-actions/setup-maven-actions@v2
         with:
           servers: >
             [
