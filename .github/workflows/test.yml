@@ -17,12 +17,37 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - run: |
+          pwd
+          echo "-1---"
+          echo "${{ github.workspace }}"
+          echo "-2---"
+          echo "$GITHUB_TOKEN"
+          echo "-3---"
+          cat ~/.m2/settings.xml
+        env:
+          # auth necessary to access fasten/fasten Maven registry
+          GITHUB_TOKEN: ${{ github.token }}
 
       - uses: actions/setup-java@v3
         with:
           java-version: ${{ matrix.jdk }}
           distribution: 'temurin'
+      
+      - run: |
+          pwd
+          echo "-1---"
+          echo "${{ github.workspace }}"
+          echo "-2---"
+          echo "$GITHUB_TOKEN"
+          echo "-3---"
+          cat ~/.m2/settings.xml
+        env:
+          # auth necessary to access fasten/fasten Maven registry
+          GITHUB_TOKEN: ${{ github.token }}
 
+      
 #      - uses: whelk-io/maven-settings-xml-action@v21
 #        with:
 #          servers: >
@@ -68,8 +93,6 @@ jobs:
           echo "$GITHUB_TOKEN"
           echo "-3---"
           cat ~/.m2/settings.xml
-          echo "-4---"
-          cat ~/xyz.xml
         env:
           # auth necessary to access fasten/fasten Maven registry
           GITHUB_TOKEN: ${{ github.token }}
