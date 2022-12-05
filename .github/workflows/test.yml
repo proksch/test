@@ -34,7 +34,7 @@ jobs:
           # auth necessary to access fasten/fasten Maven registry
           GITHUB_TOKEN: ${{ github.token }}
 
-      - uses: new-actions/setup-maven-settings@v0.0.4
+      - uses: new-actions/setup-maven-settings@v0.0.1
         with:
           servers: >
             [
