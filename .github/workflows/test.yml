@@ -1,6 +1,5 @@
 name: Verify
 
-# no trigger on tags, PRs already covered by the previous push
 on:
   push:
     branches: ['**']
@@ -10,7 +9,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-20.04]
+        os: [ubuntu-20.04, windows-2019]
         jdk: [11]
 
     runs-on: ${{ matrix.os }}
@@ -35,34 +34,7 @@ jobs:
           # auth necessary to access fasten/fasten Maven registry
           GITHUB_TOKEN: ${{ github.token }}
 
-      
-#      - uses: whelk-io/maven-settings-xml-action@v21
-#        with:
-#          servers: >
-#            [
-#              { "id": "a", "username": "u", "password": "some.password" },
-#              { "id": "b", "username": "u", "password": "${env.GITHUB_ACTOR}" },
-#              { "id": "c", "username": "u", "password": "${env.GITHUB_TOKEN}" },
-#              { "id": "d", "username": "u", "password": "${{ github.actor }}" },
-#              { "id": "e", "username": "u", "password": "${{ github.token }}" }
-#            ]
-#        env:
-#          # auth necessary to access fasten/fasten Maven registry
-#          GITHUB_TOKEN: ${{ github.token }}
-
-#      - uses: s4u/maven-settings-action@v2.8.0
-#        with:
-#          githubServer: false # avoid a default entry for "github"
-#          servers: >
-#            [
-#              { "id": "a", "username": "u", "password": "some.password" },
-#              { "id": "b", "username": "u", "password": "${env.GITHUB_ACTOR}" },
-#              { "id": "c", "username": "u", "password": "${env.GITHUB_TOKEN}" },
-#              { "id": "d", "username": "u", "password": "${{ github.actor }}" },
-#              { "id": "e", "username": "u", "password": "${{ github.token }}" }
-#            ]
-
-      - uses: new-actions/setup-maven-actions@v0.0.2
+      - uses: new-actions/setup-maven-settings@v0.0.1
         with:
           servers: >
             [
@@ -81,15 +53,6 @@ jobs:
           echo "$GITHUB_TOKEN"
           echo "-3---"
           cat ~/.m2/settings.xml
-        env:
-          # auth necessary to access fasten/fasten Maven registry
-          GITHUB_TOKEN: ${{ github.token }}
-
-      - run: |
-          echo ${{ github.actor }}
-          echo ${{ github.token }}
-          echo ${{ env.GITHUB_ACTOR }}
-          echo ${{ env.GITHUB_TOKEN }}
         env:
           # auth necessary to access fasten/fasten Maven registry
           GITHUB_TOKEN: ${{ github.token }}
