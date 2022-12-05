@@ -43,9 +43,6 @@ jobs:
           serversGH: '[ "b", "c" ]'
 
       - run: |
-          find .
-
-      - run: |
           pwd
           echo "-1---"
           echo "${{ github.workspace }}"
